@@ -1,0 +1,46 @@
+const Joi = require("joi");
+
+const orderValidationSchema = Joi.object({
+  name: Joi.string().allow(""),
+  receivedDate: Joi.string().allow(""),
+  returnDate: Joi.string().allow(""),
+  numberOfSuits: Joi.number().default(0),
+  length: Joi.number().default(0),
+  typeOfSewing: Joi.string().allow(""),
+  fullShoulder: Joi.string().allow(""),
+  monda: Joi.string().allow(""),
+  bazoHalf: Joi.string().allow(""),
+  bazoLength: Joi.string().allow(""),
+  chest: Joi.number().default(0),
+  stomach: Joi.number().default(0),
+  ghara: Joi.number().default(0),
+  banCollar: Joi.string().allow(""),
+  collarType: Joi.string().allow(""),
+  pentOption: Joi.string().allow(""),
+  shalwarGhara: Joi.string().allow(""),
+  poncha: Joi.string().allow(""),
+  asang: Joi.string().allow(""),
+  typeOfButton: Joi.string().allow(""),
+  kuff: Joi.string().allow(""),
+  pati: Joi.string().allow(""),
+  pakit: Joi.string().allow(""),
+  note: Joi.string().allow(""),
+  design: Joi.string().allow(""),
+  typeOfCloth: Joi.string().allow(""),
+  phoneNumber: Joi.string().allow(""),
+  Sholder: Joi.number().default(0),
+  BanSize: Joi.number().default(0),
+  neckSize: Joi.number().default(0),
+  pentLength: Joi.number().default(0),
+  hip: Joi.number().default(0),
+  thigh: Joi.number().default(0),
+  bottom: Joi.number().default(0),
+  frontRaise: Joi.number().default(0),
+  backRaise: Joi.number().default(0),
+  shalwarLength: Joi.number().default(0),
+
+  //keys to control data
+  status: Joi.string().required(),
+});
+
+module.exports = orderValidationSchema;

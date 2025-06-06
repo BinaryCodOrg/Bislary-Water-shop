@@ -1,0 +1,49 @@
+:root {
+  --ColorPrime: #3d4461;
+  --ColorLightGreen: #f5fff7;
+  --ColorPrimeHover: #5c6793;
+}
+
+.radioButton2 {
+    background-color: white;
+    height: 35px;
+    width: 100%;
+    min-width: 100px;
+    position: relative; /* Changed from absolute to relative */
+    overflow: hidden;
+    border: 1px solid var(--ColorPrime)  !important;
+    cursor: pointer;
+  }
+  
+  .radioButton2 input[type="radio"] {
+    all: unset !important;
+    display: none !important;
+  }
+  
+  .radioButton2 input[type="radio"]:checked + label {
+    background-color: var(--ColorPrime)  !important; /* Change background color to green */
+    color: white !important; /* Change text color to white for better contrast */
+    transition: background-color 0.7s, color 0.7s !important;
+  }
+  
+  .radioButton2 label {
+    width: 50% !important;
+    text-align: center !important;
+    display: inline-block !important;
+    height: 35px; /* Corrected height from 180px to 35px */
+    background: white; /* Default background color */
+    color: var(--ColorPrime) ;
+    transition: background-color 0.5s, color 0.5s;
+  }
+  
+  .radioButton2 label span {
+    display: flex;
+    height: 35px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+  }
+  

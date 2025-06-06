@@ -1,0 +1,99 @@
+:root {
+  --ColorPrime: #3d4461;
+  --ColorLightGreen: #f5fff7;
+  --ColorPrimeHover: #5c6793;
+}
+
+
+/* Hide up/down buttons in number input */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none; /* Chrome, Safari */
+  margin: 0; /* Reset margin */
+}
+
+input[type="number"] {
+  -moz-appearance: textfield; /* Firefox */
+}
+
+.form-control {
+  padding: 8px !important;
+  border-color: var(--ColorPrime)  !important;
+  &&::placeholder {
+    color: #949494 !important;
+  }
+  &&:is(:active, :focus, :hover) {
+    box-shadow: none !important;
+  }
+}
+
+.form-control.is-invalid {
+  padding: 8px !important;
+  border-color: #ca00008a !important;
+  &&::placeholder {
+    color: #949494 !important;
+  }
+  &&:is(:active, :focus, :hover) {
+    box-shadow: none !important;
+  }
+}
+
+.form-select {
+  padding: 8px !important;
+  border-color: var(--ColorPrime)  !important;
+  &&::placeholder {
+    color: #949494 !important;
+  }
+  &&:is(:active, :focus, :hover) {
+    box-shadow: none !important;
+  }
+}
+
+.form-select.is-invalid {
+  padding: 8px !important;
+  border-color: #ca00008a !important;
+  &&::placeholder {
+    color: #949494 !important;
+  }
+  &&:is(:active, :focus, :hover) {
+    box-shadow: none !important;
+  }
+}
+
+table tbody tr td:last-child {
+  text-align: center;
+}
+
+table thead tr {
+  border: none;
+}
+
+table thead tr:first-child th {
+  background-color: var(--ColorPrime) ;
+  color: #f8f8ff;
+}
+
+table thead tr:first-child th:first-child {
+  border-top-left-radius: 10px !important;
+  /* background-color: pink; */
+}
+table thead tr:first-child th:last-child {
+  border-top-right-radius: 10px !important;
+  /* background-color: red; */
+}
+
+.react-datepicker-wrapper .form-control {
+  width: 100% !important;
+  padding-left: 2rem !important;
+}
+.react-datepicker-wrapper
+  .react-datepicker__view-calendar-icon
+  .react-datepicker__calendar-icon {
+  /* width: % !important; */
+  position: absolute;
+  margin: 6px 0px auto 5px;
+}
+
+.react-datepicker-wrapper .react-datepicker__view-calendar-icon {
+  position: relative;
+}

@@ -1,0 +1,247 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Lilita+One&family=Paprika&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+  --ColorPrime: #3d4461;
+  --ColorLightGreen: #f5fff7;
+  --ColorPrimeHover: #5c6793;
+  --ColorLightGreenHover: #08a9d1;
+}
+
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+.customeSideHead {
+  padding: 0px !important;
+}
+.customeSideHead .ant-menu-title-content {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.TopBarStyle {
+  position: static;
+  top: 0;
+  z-index: 1000;
+  /* height: 60px; */
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: #fff;
+}
+
+.TopBarStyle .mainContainer {
+  background: #e8e8e84e;
+  color: var(--ColorPrimeHover);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  padding: 10px 1rem;
+  width: 100%;
+}
+.TopBarStyle .mainContainer .AdminControlSection {
+  background-color: #fff;
+  border-radius: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 1rem;
+}
+.ant-breadcrumb-separator {
+  margin: 0px !important;
+}
+
+.Head2 {
+  color: var(--ColorPrime);
+  font-family: "Lilita One", sans-serif;
+}
+
+.Head1 {
+  color: var(--ColorPrime);
+  font-family: "DM Sans", sans-serif !important;
+}
+
+.btnCustom {
+  background-color: var(--ColorPrime) !important;
+  color: #fff !important;
+  font-family: "DM Sans", sans-serif !important;
+  &&:is(:active, :focus, :hover) {
+    box-shadow: none !important;
+    background-color: var(--ColorPrimeHover) !important;
+    color: #fff;
+  }
+}
+
+.bgColorIncome2 {
+  background-color: var(--ColorPrime) !important;
+}
+
+.bgColorIncomeBlack {
+  background-color: #1b1b1b;
+}
+
+/* Adjust the space between items and align the progress line */
+.custom-steps
+  .ant-steps-item
+  .ant-steps-item-container
+  .ant-steps-item-tail::after {
+  top: 50px !important;
+  left: 80px !important;
+  width: 2.5px !important;
+  height: 55px !important;
+  margin-left: 0.2rem;
+}
+
+.custom-anchor .ant-anchor-link.active-step .ant-anchor-link-title {
+  color: green; /* Green text for active step */
+  font-weight: 700; /* Bold text for active step */
+  text-decoration: none !important;
+}
+
+.custom-anchor .ant-anchor-link.active-step {
+  border-left: 3px solid green; /* Green side line for active step */
+  padding-left: 8px; /* Add spacing to avoid text overlap with side line */
+}
+
+.custom-anchor .ant-anchor-link-title {
+  transition: color 0.3s;
+  text-decoration: none !important;
+}
+
+.FullHeight {
+  height: 100vh;
+}
+
+.bg-lightGreen {
+  background-color: var(--ColorLightGreen) !important;
+}
+.side-steps-container {
+  position: sticky;
+  top: 0;
+  padding-top: 1rem; /* Optional: Add some spacing */
+  z-index: 1000; /* Keep it above other content */
+}
+
+.submitBtn {
+  color: white !important;
+  background-color: var(--ColorPrime) !important;
+  border-color: var(--ColorPrime) !important;
+  &&:is(:hover, :focus, :active) {
+    border-color: #265527 !important;
+    background-color: #265527 !important;
+  }
+}
+
+.backBtn {
+  color: var(--ColorPrime) !important;
+  border-color: var(--ColorPrime) !important;
+  background-color: transparent !important;
+  &&:is(:hover, :focus, :active) {
+    color: white !important;
+    background-color: var(--ColorPrime) !important;
+  }
+}
+
+.error-text {
+  color: rgb(189, 62, 62);
+}
+
+.form-select {
+  padding-right: 30px !important;
+}
+
+.customBorder {
+  border: 2px solid var(--ColorPrime);
+  background-color: #36b44f10;
+}
+
+.form-label-Questions {
+  font-size: 16px;
+  color: #000;
+  font-weight: 500;
+  margin: 15px 0px 0px 0px !important;
+  /* text-align: justify; */
+}
+
+.ImageSizing {
+  width: 15vw;
+}
+
+.bg-gray {
+  background: #c2c2c23f;
+}
+
+.react-datepicker-wrapper {
+  z-index: 1000 !important;
+}
+
+.ClearDropDownSpan .custom-danger-option {
+  color: #d20303 !important; /* Set the text color to red */
+  &&:is(:hover, :focus, :active) {
+    background-color: #d20303; /* Set the background to red  d20303*/
+    color: white !important; /* Set the text color to white */
+  }
+}
+
+.overflow-box {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 100px;
+}
+
+/* In your global CSS or a scoped CSS module */
+.custom-ant-table .ant-table-thead > tr > th {
+  background-color: var(--ColorPrime) !important;
+  color: var(--ColorLightGreen) !important;
+}
+
+@media only screen and (max-width: 761px) {
+  .Head1 {
+    font-size: 21px !important;
+    text-align: center;
+  }
+
+  .FullHeight {
+    height: fit-content;
+  }
+
+  .ImageSizing {
+    width: 70vw;
+  }
+}
+/* 
+.scale-up-tl {
+  -webkit-animation: scale-up-tl 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  animation: scale-up-tl 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+
+@-webkit-keyframes scale-up-tl {
+  0% {
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    -webkit-transform-origin: 0% 0%;
+    transform-origin: 0% 0%;
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transform-origin: 0% 0%;
+    transform-origin: 0% 0%;
+  }
+}
+@keyframes scale-up-tl {
+  0% {
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    -webkit-transform-origin: 0% 0%;
+    transform-origin: 0% 0%;
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transform-origin: 0% 0%;
+    transform-origin: 0% 0%;
+  }
+} */

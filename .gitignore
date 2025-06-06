@@ -28,29 +28,29 @@ pnpm-lock.yaml
 # =============================
 # Frontend
 # =============================
-Frontend/node_modules/
-Frontend/dist/
+Frontend/node_modules
+Frontend/dist
 Frontend/.env
-Frontend/.next/
-Frontend/.turbo/
-Frontend/.cache/
-Frontend/.output/
-Frontend/out/
+Frontend/.next
+Frontend/.turbo
+Frontend/.cache
+Frontend/.output
+Frontend/out
 
 # Vite/React build files
-Frontend/build/
-Frontend/coverage/
+Frontend/build
+Frontend/coverage
 
 # =============================
 # Backend
 # =============================
-Backend/node_modules/
-Backend/dist/
+Backend/node_modules
+Backend/dist
 Backend/.env
-Backend/build/
-Backend/coverage/
-Backend/.cache/
-Backend/.output/
+Backend/build
+Backend/coverage
+Backend/.cache
+Backend/.output
 
 # =============================
 # Editor and IDE settings

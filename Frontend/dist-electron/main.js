@@ -1101,14 +1101,14 @@ ipcMain.handle("stats:todaySummary", async () => {
       `
       SELECT COUNT(*) as count
       FROM orders
-      WHERE DATE(createdAt) = ?
+      WHERE DATE(createdAt) = DATE(?)
     `
     ).get(today).count;
     const totalRevenueToday = db.prepare(
       `
       SELECT COALESCE(SUM(total_amount), 0) as total
       FROM orders
-      WHERE DATE(createdAt) = ?
+      WHERE DATE(createdAt) = DATE(?)
     `
     ).get(today).total;
     const deliveryRevenueToday = db.prepare(
@@ -1116,14 +1116,14 @@ ipcMain.handle("stats:todaySummary", async () => {
       SELECT COALESCE(SUM(o.total_amount), 0) as total
       FROM orders o
       JOIN order_delivery d ON o.id = d.order_id
-      WHERE DATE(o.createdAt) = ?
+      WHERE DATE(createdAt) = DATE(?)
     `
     ).get(today).total;
     const totalExpensesToday = db.prepare(
       `
       SELECT COALESCE(SUM(amount), 0) as total
       FROM expenses
-      WHERE DATE(createdAt) = ?
+      WHERE DATE(createdAt) = DATE(?)
     `
     ).get(today).total;
     return {

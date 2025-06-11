@@ -17,6 +17,7 @@ import {
 
 const LandingPage = () => {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(true);
+  const [reload, setReload] = useState(true);
 
   const [webHead, setWebHead] = useState("Dashboard");
   const [ordersArray, setOrdersArray] = useRecoilState(OrdersArray);
@@ -43,8 +44,10 @@ const LandingPage = () => {
   }, [location]);
 
   useEffect(() => {
-    FetchOrders();
-  }, []);
+    if (reload) {
+      FetchOrders();
+    }
+  }, [reload]);
 
   async function FetchOrders() {
     setLoading((prev) => ({
@@ -67,7 +70,7 @@ const LandingPage = () => {
 
       const TodayStatsObj = await window.api.getTodayStats();
       console.log(TodayStatsObj, "TodayStatsObjs");
-      setTodayStats(TodayStatsObj);
+      setTodayStats(TodayStatsObj.data);
 
       setLoading((prev) => ({
         ...prev,
@@ -87,6 +90,7 @@ const LandingPage = () => {
         isLoading: false,
         message: "Data fetching completed",
       }));
+      setReload(false);
     }
   }
 
@@ -118,6 +122,8 @@ const LandingPage = () => {
         <TopBar
           collapsed={isSidebarCollapsed}
           setCollapsed={setIsSidebarCollapsed}
+          setReload={setReload}
+          reload={reload}
         />
 
         {/* Main Content */}

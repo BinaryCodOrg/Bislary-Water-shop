@@ -211,6 +211,24 @@
     width: 70vw;
   }
 }
+
+
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinReload {
+  animation: spin 1s linear infinite;
+}
+
+
+
 /* 
 .scale-up-tl {
   -webkit-animation: scale-up-tl 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;

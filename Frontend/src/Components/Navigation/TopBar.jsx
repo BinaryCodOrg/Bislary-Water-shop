@@ -8,6 +8,8 @@ import { TiThMenu } from "react-icons/ti";
 import { useLocation } from "react-router-dom";
 import Content from "../../assets/Content";
 
+import { IoReload } from "react-icons/io5";
+
 const TopBar = (props) => {
   let { collapsed, setCollapsed } = props;
 
@@ -60,6 +62,16 @@ const TopBar = (props) => {
                   size={"20px"}
                   onClick={() => {
                     setCollapsed(!collapsed);
+                  }}
+                />
+              </div>
+              <div className="w-25">
+                <IoReload
+                  role="button"
+                  size={"20px"}
+                  className={props.reload ? "spinReload" : ""}
+                  onClick={() => {
+                    props.setReload(!props.reload);
                   }}
                 />
               </div>

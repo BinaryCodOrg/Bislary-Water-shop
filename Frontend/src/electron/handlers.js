@@ -434,14 +434,14 @@ ipcMain.handle("order:add:walkIn", async (event, order) => {
 ipcMain.handle("stats:todaySummary", async () => {
   try {
     const today = new Date().toISOString().split("T")[0]; // YYYY-MM-DD
-
+    // console.log(today);
     // Total Orders
     const totalSalesToday = db
       .prepare(
         `
       SELECT COUNT(*) as count
       FROM orders
-      WHERE DATE(createdAt) = ?
+      WHERE DATE(createdAt) = DATE(?)
     `
       )
       .get(today).count;
@@ -452,7 +452,7 @@ ipcMain.handle("stats:todaySummary", async () => {
         `
       SELECT COALESCE(SUM(total_amount), 0) as total
       FROM orders
-      WHERE DATE(createdAt) = ?
+      WHERE DATE(createdAt) = DATE(?)
     `
       )
       .get(today).total;
@@ -464,7 +464,7 @@ ipcMain.handle("stats:todaySummary", async () => {
       SELECT COALESCE(SUM(o.total_amount), 0) as total
       FROM orders o
       JOIN order_delivery d ON o.id = d.order_id
-      WHERE DATE(o.createdAt) = ?
+      WHERE DATE(createdAt) = DATE(?)
     `
       )
       .get(today).total;
@@ -475,7 +475,7 @@ ipcMain.handle("stats:todaySummary", async () => {
         `
       SELECT COALESCE(SUM(amount), 0) as total
       FROM expenses
-      WHERE DATE(createdAt) = ?
+      WHERE DATE(createdAt) = DATE(?)
     `
       )
       .get(today).total;

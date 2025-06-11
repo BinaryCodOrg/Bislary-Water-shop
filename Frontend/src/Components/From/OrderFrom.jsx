@@ -75,6 +75,19 @@ const OrderFrom = (props) => {
     }
   }, [location]);
 
+  const manualOptions = [
+    { value: "walk-in-Customer", label: "walk-in-Customer" },
+    { value: "Ikram", label: "Ikram" },
+    { value: "Islam", label: "Islam" },
+    { value: "Sonu", label: "Sonu" },
+    { value: "Saif", label: "Saif" },
+  ];
+
+  // Filter out those already in houseNumberArray
+  const filteredManualOptions = manualOptions.filter(
+    (opt) => !houseNumberArray.includes(opt.value)
+  );
+
   return (
     <Formik
       initialValues={{
@@ -214,14 +227,7 @@ const OrderFrom = (props) => {
                     name={`houseNumber`}
                     component={CreatableSelectField}
                     label="Multi Select Field"
-                    options={[
-                      { value: "walk-in-Customer", label: "walk-in-Customer" },
-                      { value: "Ikram", label: "Ikram" },
-                      { value: "Islam", label: "Islam" },
-                      { value: "Sonu", label: "Sonu" },
-                      { value: "Saif", label: "Saif" },
-                      ...optionsMultiSelect,
-                    ]}
+                    options={[...filteredManualOptions, ...optionsMultiSelect]}
                     onChangeCallback={(target) => {
                       // Filter orders by selected houseNumber
                       const matchingOrders = orderData

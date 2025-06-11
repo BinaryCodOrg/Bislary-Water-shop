@@ -397,6 +397,7 @@ const DashBoard = () => {
 
   useEffect(() => {
     if (Object.keys(todayStats).length > 0) {
+      console.log(todayStats.totalRevenueToday);
       setWidgets([
         {
           Name: "Daily Sales",
@@ -409,7 +410,7 @@ const DashBoard = () => {
         },
         {
           Name: "Daily Delivery",
-          value: toCommaAndPKR(todayStats.totalRevenueToday || 0),
+          value: parseFloat(todayStats.deliveryRevenueToday),
           symbol: "Rs",
           symbolLocation: "prefix",
           icon: DeliveryBox,
@@ -418,7 +419,7 @@ const DashBoard = () => {
         },
         {
           Name: "Daily expense",
-          value: toCommaAndPKR(todayStats.deliveryRevenueToday || 0),
+          value: parseFloat(todayStats.totalExpensesToday || 0),
           symbol: "Rs",
           symbolLocation: "prefix",
           icon: ExpanceIcon,
@@ -427,7 +428,7 @@ const DashBoard = () => {
         },
         {
           Name: "Total Sale",
-          value: toCommaAndPKR(todayStats.totalExpensesToday || 0),
+          value: parseFloat(todayStats.totalRevenueToday || 0),
           symbol: "Rs",
           symbolLocation: "prefix",
           icon: moneyRecive,
@@ -475,10 +476,25 @@ const DashBoard = () => {
                 headings={headings}
                 data={
                   Array.isArray(orderData)
-                    ? orderData.filter(
-                        (item) =>
-                          !["complete", "debit", "cradit"].includes(item.status)
-                      )
+                    ? orderData.filter((item) => {
+                        const statusValid = ![
+                          "complete",
+                          "debit",
+                          "cradit",
+                        ].includes(item.status);
+
+                        const createdAt = new Date(item.createdAt);
+                        const today = new Date();
+                        const yesterday = new Date();
+                        yesterday.setDate(today.getDate() - 1);
+
+                        const isToday =
+                          createdAt.toDateString() === today.toDateString();
+                        const isYesterday =
+                          createdAt.toDateString() === yesterday.toDateString();
+
+                        return statusValid && (isToday || isYesterday);
+                      })
                     : []
                 }
                 listConcatenationArray={["houseNumber"]}

@@ -8,6 +8,7 @@ import HeadChanger from "../../assets/Custom/HeadChanger";
 import NotFound from "../NotFound";
 import { useRecoilState } from "recoil";
 import {
+  AllDues,
   DelivaryBoysArray,
   HouseNumbersArray,
   Loading,
@@ -28,6 +29,7 @@ const LandingPage = () => {
     useRecoilState(DelivaryBoysArray);
   const [loading, setLoading] = useRecoilState(Loading);
   const [todayStats, setTodayStats] = useRecoilState(TodayStats);
+  const [allDues, setAllDues] = useRecoilState(AllDues);
 
   let location = useLocation();
 
@@ -57,20 +59,24 @@ const LandingPage = () => {
     }));
     try {
       const data = await window.api.getOrders();
-      console.log(data, data.length, "Orders Data");
+      // console.log(data, data.length, "Orders Data");
       setOrdersArray(data);
 
       const houseNumbers = await window.api.getAllHouseNumbers();
-      console.log(houseNumbers, "houseNumbers");
+      // console.log(houseNumbers, "houseNumbers");
       setHouseNumbersArray(houseNumbers);
 
       const DelivaryBoys = await window.api.getDeliveryBoys();
-      console.log(DelivaryBoys, "DelivaryBoys");
+      // console.log(DelivaryBoys, "DelivaryBoys");
       setDelivaryBoysArray(DelivaryBoys);
 
       const TodayStatsObj = await window.api.getTodayStats();
-      console.log(TodayStatsObj, "TodayStatsObjs");
+      // console.log(TodayStatsObj, "TodayStatsObjs");
       setTodayStats(TodayStatsObj.data);
+
+      const getAllDues = await window.api.getAllDues();
+      console.log(getAllDues, "getAllDues");
+      setAllDues(getAllDues);
 
       setLoading((prev) => ({
         ...prev,

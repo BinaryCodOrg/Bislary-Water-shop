@@ -1,0 +1,113 @@
+.notFoundSVG {
+  height: 100%;
+  /* background-color: red !important; */
+  width: 100%;
+}
+
+.notFoundSVG
+  svg#freepik_stories-404-error-page-not-found-with-people-connecting-a-plug:not(
+    .animated
+  )
+  .animable {
+  opacity: 0;
+}
+
+.notFoundSVG
+  svg#freepik_stories-404-error-page-not-found-with-people-connecting-a-plug.animated
+  #freepik--background-complete--inject-4 {
+  animation: 1s 1 forwards cubic-bezier(0.36, -0.01, 0.5, 1.38) zoomOut;
+  animation-delay: 0s;
+}
+
+.notFoundSVG
+  svg#freepik_stories-404-error-page-not-found-with-people-connecting-a-plug.animated
+  #freepik--Stains--inject-4 {
+  animation: 1s 1 forwards cubic-bezier(0.36, -0.01, 0.5, 1.38) fadeIn;
+  animation-delay: 0s;
+}
+
+.notFoundSVG
+  svg#freepik_stories-404-error-page-not-found-with-people-connecting-a-plug.animated
+  #freepik--character-2--inject-4 {
+  animation: 1s 1 forwards cubic-bezier(0.36, -0.01, 0.5, 1.38) zoomOut;
+  animation-delay: 0s;
+}
+
+.notFoundSVG
+  svg#freepik_stories-404-error-page-not-found-with-people-connecting-a-plug.animated
+  #freepik--character-1--inject-4 {
+  animation: 1s 1 forwards cubic-bezier(0.36, -0.01, 0.5, 1.38) slideDown;
+  animation-delay: 0s;
+}
+
+.notFoundSVG
+  svg#freepik_stories-404-error-page-not-found-with-people-connecting-a-plug.animated
+  #freepik--error-404--inject-4 {
+  animation: 1s 1 forwards cubic-bezier(0.36, -0.01, 0.5, 1.38) slideRight;
+  animation-delay: 0s;
+}
+
+.notFoundSVG
+  svg#freepik_stories-404-error-page-not-found-with-people-connecting-a-plug.animated
+  #freepik--Lines--inject-4 {
+  animation: 1s 1 forwards cubic-bezier(0.36, -0.01, 0.5, 1.38) zoomIn;
+  animation-delay: 0s;
+}
+
+@keyframes zoomOut {
+  0% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideRight {
+  0% {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes zoomIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

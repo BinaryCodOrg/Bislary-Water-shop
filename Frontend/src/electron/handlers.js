@@ -461,9 +461,9 @@ ipcMain.handle("stats:todaySummary", async () => {
     const deliveryRevenueToday = db
       .prepare(
         `
-      SELECT COALESCE(SUM(o.total_amount), 0) as total
-      FROM orders o
-      JOIN order_delivery d ON o.id = d.order_id
+      SELECT COALESCE(SUM(o.amount_paid), 0) as total
+      FROM payments o
+      JOIN orders d ON o.order_id = d.id
       WHERE DATE(createdAt) = DATE(?)
     `
       )

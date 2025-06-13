@@ -98,11 +98,11 @@ const AdminSideBar = (props) => {
         <Menu.Item
           key="3"
           onClick={() => {
-            Nav("/Customers");
+            Nav("/Accounts");
           }}
-          icon={<FaUsers />}
+          icon={<MdOutlineAccountBalanceWallet />}
         >
-          Customers
+          Accounts
         </Menu.Item>
 
         <SubMenu key="sub1" icon={<FaMoneyBillTransfer />} title="Sale">
@@ -126,12 +126,12 @@ const AdminSideBar = (props) => {
           </Menu.Item>
           <Menu.Item
             key="8"
-            icon={<MdOutlineAccountBalanceWallet />}
+            icon={<FaUsers />}
             onClick={() => {
-              Nav("/Account");
+              Nav("/Customers");
             }}
           >
-            Account
+            Customers
           </Menu.Item>
           <Menu.Item
             key="9"

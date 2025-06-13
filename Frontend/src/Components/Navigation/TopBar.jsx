@@ -23,13 +23,14 @@ const TopBar = (props) => {
   useEffect(() => {
     // Remove the leading slash from the pathname and split it into an array
     const slicesArray = location.pathname.split("/");
-    // console.log(slicesArray, "array");
+
     setBreadcrumbs(slicesArray);
+
     const matchedPage = Content.Pages.find(
       (page) => page.route === location.pathname
     );
 
-    setContentBlock(matchedPage);
+    setContentBlock(matchedPage || { Title: "Not Found" });
   }, [location.pathname]); // Use location.pathname as the dependency to avoid unnecessary re-renders
 
   return (

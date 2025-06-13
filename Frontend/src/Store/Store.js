@@ -32,3 +32,8 @@ export const TodayStats = atom({
   key: "TodayStats",
   default: {},
 });
+
+export const AllDues = atom({
+  key: "AllDues",
+  default: [],
+});

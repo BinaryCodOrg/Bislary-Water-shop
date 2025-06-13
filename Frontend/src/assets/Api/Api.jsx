@@ -264,8 +264,12 @@ const touchFields = async (
   return isValid; // Return true if all fields are valid, false otherwise
 };
 
-const WalkInOrder = async () => {
-  
+let ConvertDate = (date) => {
+  let d = new Date(date);
+  let day = d.getDate().toString().padStart(2, "0");
+  let month = (d.getMonth() + 1).toString().padStart(2, "0"); // Months are zero-based
+  let year = d.getFullYear();
+  return `${month}/${day}/${year}`;
 };
 
 export {
@@ -287,4 +291,5 @@ export {
   handleInputBlur,
   validateName,
   touchFields,
+  ConvertDate,
 };

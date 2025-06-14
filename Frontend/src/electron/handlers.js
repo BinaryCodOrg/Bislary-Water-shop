@@ -221,11 +221,13 @@ ipcMain.handle("order:add:smart", async (event, order) => {
   );
   const orderId = result.lastInsertRowid;
 
-  const insertDue = db.prepare(`
-    INSERT INTO dues_ledger (order_id, due_amount, houseNumber)
-    VALUES (?, ?, ?)
-  `);
-  insertDue.run(orderId, totalDue, houseNumber);
+  if (status !== "complete") {
+    const insertDue = db.prepare(`
+      INSERT INTO dues_ledger (order_id, due_amount, houseNumber)
+      VALUES (?, ?, ?)
+      `);
+    insertDue.run(orderId, totalDue, houseNumber);
+  }
 
   return { success: true, id: orderId };
 });

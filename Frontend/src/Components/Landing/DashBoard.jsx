@@ -31,6 +31,7 @@ import { HiMiniMinusCircle } from "react-icons/hi2";
 import { BiSolidDollarCircle } from "react-icons/bi";
 import SmartModal from "../../assets/Custom/SmartModal";
 import OrderCompletionForm from "../From/OrderCompletionForm";
+import OrdersData from "./OrdersData";
 
 const DashBoard = () => {
   let Nav = useNavigate();
@@ -39,8 +40,6 @@ const DashBoard = () => {
   let [orderData, setOrdersArray] = useRecoilState(OrdersArray);
   let todayStats = useRecoilValue(TodayStats);
 
-  let [flagState, setFlagState] = useState(false);
-  let [modalObject, setModalObject] = useState({});
 
   let graph = {
     labels: ["January", "February", "March", "April", "May"],
@@ -211,108 +210,11 @@ const DashBoard = () => {
     },
   ];
 
-  let NewAppointmentHandling = async (Heading, row, action) => {
-    // console.log(Heading, row, action, "NewAppointmentHandling");
-    switch (action) {
-      case "Edit":
-      case "edit":
-        // Function to handle edit action
-        // console.log("Editing Order:", row);
-
-        if (row.status === "pending") {
-          Nav("/orders#Edit", { state: row });
-        } else {
-          openNotification(
-            "warning",
-            "topRight",
-            "Status Error",
-            "Only pending orders can be Edited."
-          );
-        }
-
-        break;
-      case "MarkDone":
-      case "markDone":
-        if (row.status === "pending") {
-          // Function to handle marking order as done
-          // console.log("Marking order as done:", row);
-          setModalObject({
-            title: "Order Completion",
-            size: "small",
-            row,
-            type: "markDone",
-          });
-          setFlagState(true);
-          // changeStatus(row, "Complete");
-        } else {
-          openNotification(
-            "warning",
-            "topRight",
-            "Status Error",
-            "Only pending orders can be completed."
-          );
-        }
-        break;
-      case "Cancel":
-      case "cancel":
-        // Function to handle cancel action
-        // console.log("Cancelling Order:", row);
-        if (row.status === "pending") {
-          changeStatus(row, "Canceled");
-        } else {
-          openNotification(
-            "warning",
-            "topRight",
-            "Status Error",
-            "Only pending orders can be cancelled."
-          );
-        }
-        break;
-      case "Delete":
-      case "delete":
-        // Function to handle delete action
-        // console.log("Deleting Order:", row);
-
-        deleteFunction(row.id);
-
-        break;
-      default:
-        console.log("Unknown action:", action);
-    }
-  };
-
   let TodaysAppointmentHandling = (Heading, row, action) => {
     console.log(Heading, row, action, "TodaysAppointmentHandling");
   };
 
-  const menuItems = [
-    {
-      action: "edit",
-      label: "Edit",
-      icon: <FaEdit />,
-      onClick: (heading, row) => CallBack(heading, row, "Edit"),
-    },
-    {
-      action: "markDone",
-      label: "Mark Done",
-      icon: <IoIosCheckmarkCircle />,
-      onClick: (heading, row) => CallBack(heading, row, "MarkDone"),
-    },
-    {
-      action: "cancel",
-      label: "Cancel",
-      danger: true,
-      icon: <MdCancel />,
-      onClick: (heading, row) => CallBack(heading, row, "Cancel"),
-    },
-    {
-      action: "delete",
-      label: "Delete",
-      danger: true,
-      icon: <FaTrashAlt />,
-      onClick: (heading, row) => CallBack(heading, row, "Delete"),
-    },
-  ];
+
 
   let CallBack = (elem) => {
     // alert(elem);
@@ -338,62 +240,7 @@ const DashBoard = () => {
     }
   };
 
-  const deleteFunction = (id) => {
-    confirm({
-      title: "Are you sure you want to delete this order?",
-      content: "This action cannot be undone.",
-      okText: "Yes, Delete",
-      okType: "danger",
-      cancelText: "Cancel",
-      centered: true,
-      onOk: async () => {
-        const result = await window.api.deleteOrder(id);
-        if (result.success) {
-          setOrdersArray((prev) => prev.filter((order) => order.id !== id));
-          openNotification(
-            "success",
-            "topRight",
-            "Delete Successful",
-            "Order deleted successfully."
-          );
-        } else {
-          openNotification(
-            "error",
-            "topRight",
-            "Delete Failed",
-            result.error || "An error occurred while deleting the order."
-          );
-          console.error(result.error);
-        }
-      },
-    });
-  };
-
-  const changeStatus = async (row, status) => {
-    try {
-      const result = await window.api.updateOrderStatus(row.id, status);
-      if (result.success) {
-        setOrdersArray((prev) =>
-          prev.map((order) =>
-            order.id === row.id ? { ...order, status } : order
-          )
-        );
-        openNotification(
-          "success",
-          "topRight",
-          "Status Changed",
-          "New status of order from house: " + row.houseNumber + " is " + status
-        );
-      }
-    } catch (error) {
-      openNotification(
-        "error",
-        "topRight",
-        "Status not Changed",
-        "Some thing went wrrong Please try later"
-      );
-    }
-  };
+ 
 
   useEffect(() => {
     if (Object.keys(todayStats).length > 0) {
@@ -441,13 +288,7 @@ const DashBoard = () => {
 
   return (
     <div className="container-fluid p-0">
-      <SmartModal
-        modalObject={modalObject}
-        setFlagState={setFlagState}
-        flagState={flagState}
-      >
-        <OrderCompletionForm />
-      </SmartModal>
+     
 
       <Row className="align-items-stretch mb-3">
         <div className="col-md-12">
@@ -504,30 +345,7 @@ const DashBoard = () => {
         </div>
 
         <div className="col-md-12 mt-3">
-          <Card className={"shadow p-3"}>
-            <div className="d-flex justify-content-between">
-              <h4 className="Head1 mb-4">All Orders span</h4>
-
-              <CButton
-                text="Add Order"
-                onClick={() => {
-                  Nav("/orders");
-                }}
-              />
-            </div>
-            <DynamicTable
-              type="antd"
-              CallBack={NewAppointmentHandling}
-              menuItems={menuItems}
-              headings={headings}
-              data={
-                Array.isArray(orderData) && orderData.length > 0
-                  ? orderData
-                  : []
-              }
-              pagination={true}
-            />
-          </Card>
+          <OrdersData/>
         </div>
       </Row>
     </div>

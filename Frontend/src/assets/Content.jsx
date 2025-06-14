@@ -4,6 +4,8 @@ import Orders from "../Components/Orders/Orders";
 import DeliveryBoys from "../Components/DeliveryBoys/DeliveryBoys";
 import NotFound from "../Components/NotFound";
 import Accounts from "../Components/Accounts/Accounts";
+import AllOrders from "../Components/AllOrders/AllOrders";
+import AllExpanses from "../Components/AllExpanses/AllExpanses";
 
 const Content = {
   Pages: [
@@ -26,6 +28,16 @@ const Content = {
       Title: "Accounts",
       route: "/Accounts",
       element: <Accounts />,
+    },
+    {
+      Title: "AllOrders",
+      route: "/AllOrders",
+      element: <AllOrders />,
+    },
+    {
+      Title: "Expanses",
+      route: "/Expanses",
+      element: <AllExpanses />,
     },
     {
       Title: "404",

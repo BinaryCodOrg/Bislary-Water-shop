@@ -12,6 +12,7 @@ import {
   RiAppsLine,
   RiMenu2Fill,
   RiMenuFill,
+  RiReceiptLine,
 } from "react-icons/ri";
 import AdviserS1 from "../../assets/Images/logos/2-removebg-preview.png";
 import AdviserSmini from "../../assets/Images/logos/1-removebg-preview.png";
@@ -20,6 +21,7 @@ import { FaUsers } from "react-icons/fa";
 import { FaMoneyBillTransfer } from "react-icons/fa6";
 import { TbTruckDelivery } from "react-icons/tb";
 import { PiHandCoinsFill } from "react-icons/pi";
+import { GoPackageDependencies } from "react-icons/go";
 
 const { SubMenu } = Menu;
 
@@ -87,6 +89,7 @@ const AdminSideBar = (props) => {
 
         <Menu.Item
           onClick={() => {
+            props.setReload(!props.reload);
             Nav("/");
           }}
           key="2"
@@ -97,6 +100,16 @@ const AdminSideBar = (props) => {
 
         <Menu.Item
           key="3"
+          onClick={() => {
+            Nav("/AllOrders");
+          }}
+          icon={<GoPackageDependencies />}
+        >
+          All Orders
+        </Menu.Item>
+
+        <Menu.Item
+          key="4"
           onClick={() => {
             Nav("/Accounts");
           }}
@@ -117,6 +130,15 @@ const AdminSideBar = (props) => {
           </Menu.Item>
           <Menu.Item
             key="6"
+            icon={<RiReceiptLine />}
+            onClick={() => {
+              Nav("/Expanses");
+            }}
+          >
+            Expanses
+          </Menu.Item>
+          <Menu.Item
+            key="7"
             icon={<PiHandCoinsFill />}
             onClick={() => {
               Nav("/Cash");

@@ -37,3 +37,8 @@ export const AllDues = atom({
   key: "AllDues",
   default: [],
 });
+
+export const ExpancesArray = atom({
+  key: "ExpancesArray",
+  default: [],
+});

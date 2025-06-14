@@ -123,13 +123,7 @@ const OrderFrom = (props) => {
         try {
           console.log("valeus to save:", values);
           const payload = values;
-          // return;
-
-          // console.log("window.api :", window.api);
-
-          // Use exposed Electron API
-          // const result = await window.api.addOrder(payload); //Simple Order Add
-
+          
           const result = await window.api.addSmartOrder(payload); //Smart Order Add
 
           console.log("result from api:", result);

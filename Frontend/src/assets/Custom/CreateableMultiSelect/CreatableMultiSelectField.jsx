@@ -113,11 +113,21 @@ const CreatableSelectField = ({
   const handleCreate = (inputValue) => {
     setIsLoading(true);
     setTimeout(() => {
-      const newOption = createOption(inputValue);
+      const isDateFormat = /^\d{2}\/\d{2}\/\d{4}$/.test(inputValue.trim()); // Matches MM/DD/YYYY
+      const newOption = isDateFormat
+        ? { label: inputValue.trim(), value: inputValue.trim() }
+        : createOption(inputValue);
       setIsLoading(false);
       setOptions((prev) => [...prev, newOption]);
       setValue(newOption);
       form.setFieldValue(field.name, newOption.value);
+      if (onChangeCallback) {
+        if (isDateFormat) {
+          onChangeCallback(inputValue);
+        } else {
+          onChangeCallback(newOption.value ? newOption.value : null);
+        }
+      }
     }, 1000);
   };
   const customStyles = {

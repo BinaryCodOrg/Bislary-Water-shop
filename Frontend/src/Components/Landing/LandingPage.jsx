@@ -10,6 +10,7 @@ import { useRecoilState } from "recoil";
 import {
   AllDues,
   DelivaryBoysArray,
+  ExpancesArray,
   HouseNumbersArray,
   Loading,
   OrdersArray,
@@ -27,6 +28,7 @@ const LandingPage = () => {
 
   let [delivaryBoysArray, setDelivaryBoysArray] =
     useRecoilState(DelivaryBoysArray);
+  let [expancesArray, setExpancesArray] = useRecoilState(ExpancesArray);
   const [loading, setLoading] = useRecoilState(Loading);
   const [todayStats, setTodayStats] = useRecoilState(TodayStats);
   const [allDues, setAllDues] = useRecoilState(AllDues);
@@ -75,8 +77,12 @@ const LandingPage = () => {
       setTodayStats(TodayStatsObj.data);
 
       const getAllDues = await window.api.getAllDues();
-      console.log(getAllDues, "getAllDues");
+      // console.log(getAllDues, "getAllDues");
       setAllDues(getAllDues);
+
+      const getExpenses = await window.api.getExpenses();
+      console.log(getExpenses, "getExpenses");
+      setExpancesArray(getExpenses.data);
 
       setLoading((prev) => ({
         ...prev,
@@ -119,6 +125,8 @@ const LandingPage = () => {
         <AdminSideBar
           collapsed={isSidebarCollapsed}
           setCollapsed={setIsSidebarCollapsed}
+          setReload={setReload}
+          reload={reload}
         />
       </div>
 

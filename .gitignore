@@ -28,18 +28,12 @@ pnpm-lock.yaml
 # =============================
 # Frontend
 # =============================
-Frontend/node_modules
-Frontend/dist
-Frontend/.env
-Frontend/.next
-Frontend/.turbo
-Frontend/.cache
-Frontend/.output
-Frontend/out
-
-# Vite/React build files
-Frontend/build
-Frontend/coverage
+desktop-application/node_modules
+desktop-application/dist
+desktop-application/out
+desktop-application/.DS_Store
+desktop-application/.eslintcache
+desktop-application/*.log*
 
 # =============================
 # Backend

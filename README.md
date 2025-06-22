@@ -1,108 +1,160 @@
-<h1 align="center">
-🌐 MERN Stack
-</h1>
-<p align="center">
-MongoDB, Expressjs, React/Recoil, Nodejs
-</p>
+# Bislary Water Shop Desktop Application
 
-> MERN is a fullstack implementation in MongoDB, Expressjs, React/Recoil, Nodejs.
+![Bislary Logo](./desktop-application/resources/icon.png)
 
-MERN stack is the idea of using Javascript/Node for fullstack web development. you will be able to see two folders Frontend and Backend
+A modern desktop application for managing water bottle delivery, order tracking, payments, and delivery staff using Electron, React, Vite, Ant Design, and Better-SQLite3.
 
-## 📌 About the Project
+---
 
-This project is a comprehensive web-based management system built for a water filtration plant. It handles customer orders, tracks their statuses, and manages rider assignments for deliveries. The system also provides functionality to export order and delivery data into Excel for reporting and record-keeping. It ensures smooth coordination between staff, riders, and order fulfillment while maintaining clear delivery accountability.
+## 📄 Project Overview
 
-## clone or download
+This is a cross-platform desktop application built with [Electron](https://www.electronjs.org/), powered by the [Vite](https://vitejs.dev/) build system and [React](https://react.dev/) for the UI. It enables water delivery shops to manage daily operations such as orders, payments, expenses, and delivery management.
 
-```terminal
-$ git clone https://github.com/BinaryCodOrg/Tailor-Project.git
-$ cd Backend
-$ yarn # or npm i
-$ cd .. && cd Frontend
-$ yarn # or npm i
+---
+
+## 💡 Features
+
+### ✅ Orders Management
+
+* Create, update, delete delivery, walk-in, and bulk orders
+* Auto-calculate totals based on quantity and rate
+* Attach remarks, payment info, and assign delivery boys
+
+### ✉️ Delivery Assignment
+
+* Assign orders to delivery boys
+* Track delivery status
+
+### 💳 Payments & Dues
+
+* Record payments
+* Track dues ledger
+* Auto-settle dues
+
+### 💼 Delivery Boys
+
+* Add/edit/delete delivery personnel
+* Assign deliveries
+
+### 📈 Dashboard Statistics
+
+* View today's revenue, expenses, and total orders
+
+### 💸 Expenses
+
+* Add/update daily expenses
+* Get visual charts and breakdowns
+
+---
+
+## ✨ UI Framework
+
+Built with **Ant Design v5** and **React Bootstrap**, for a smooth, responsive UI experience.
+
+---
+
+## 📊 Charts
+
+Uses **Chart.js** for data visualizations and summaries.
+
+---
+
+## ⌨️ Keyboard Shortcuts
+
+Common keyboard hotkeys included via `react-hotkeys-hook` for productivity:
+
+* `Ctrl + N` → New Order
+* `Ctrl + D` → Dashboard
+* `Ctrl + E` → Add Expense
+
+---
+
+## 🗋 Database
+
+* Local SQLite DB using **Better-SQLite3**
+* Offline-first architecture
+* Data stored in `userData` folder during runtime
+
+To migrate DB to another PC, copy `waterData.db` from:
+
+```
+C:\Users\<user>\AppData\Roaming\Bislary\waterData.db
 ```
 
-(Remember: you have to run npm i after opening folder)
+---
 
-# Usage (run fullstack app on your machine)
+## 🌐 Fonts
 
-## Prerequisites
+This app uses custom fonts like `Poppins`, `DM Sans`, `Paprika`, `Lilita One`, and `Inria Serif`, locally imported to support CSP restrictions.
 
-- [MongoDB](https://gist.github.com/nrollr/9f523ae17ecdbb50311980503409aeb3)
-- [Node](https://nodejs.org/en/download/) ^10.0.0
-- [npm](https://nodejs.org/en/download/package-manager/)
+---
 
-notice, you need client and server runs concurrently in different terminal session, in order to make them talk to each other
+## 🚀 Build & Packaging
 
-## Client-side usage(PORT: 3000)
+Electron-Vite handles fast development with hot module reloading. The app is packaged using **electron-builder**.
 
-```terminal
-$ cd Frontend          // go to client folder
-$ yarn # or npm i    // npm install packages
-$ npm run dev        // run it locally
-
-// deployment for client app
-$ npm run build // this will compile the react code using webpack and generate a folder called docs in the root level
-$ npm run start // this will run the files in docs, this behavior is exactly the same how gh-pages will run your static site
+```bash
+npm run build:win   # Windows build
+npm run build:mac   # macOS build
+npm run build:linux # Linux build
 ```
 
-## Server-side usage(PORT: 8000)
+---
 
-### Prepare your secret
+## ⚙️ Technologies Used
 
-run the script at the first level:
+| Category   | Libraries                                    |
+| ---------- | -------------------------------------------- |
+| UI         | React, Ant Design, React Bootstrap           |
+| State      | Recoil                                       |
+| Charts     | Chart.js                                     |
+| Forms      | Formik, Yup                                  |
+| DB         | Better-SQLite3                               |
+| PDF Export | jsPDF, autoTable                             |
+| Others     | axios, react-hotkeys-hook, react-select, aos |
 
-(You need to add a JWT_SECRET in .env to connect to MongoDB)
+---
 
-```terminal
-// in the root level
-$ cd Backend
-$ echo "JWT_SECRET=YOUR_JWT_SECRET" >> src/.env
-$ echo "Mongos_DB_connection=YOUR_Mongos_DB_connection_link" >> src/.env
-```
+## 📖 Documentation
 
-### Start
+This application is structured following modern best practices:
 
-```terminal
-$ cd Backend   // go to server folder
-$ npm i       // npm install packages
-$ nodemon app // run it locally
-```
+* **Preload API**: Exposes custom secure APIs via `contextBridge`
+* **IPC Communication**: All database interactions use `ipcMain.handle`
+* **Main Process**: Loads renderer conditionally, supports packaging
+* **Renderer Process**: React-based UI with routing and hooks
 
-# Dependencies(tech-stacks)
+---
 
-| Client-side                         | Server-side           |
-| ---------------------------------- | --------------------- |
-| @react-icons/all-files: ^4.1.0     | cors: ^2.8.5          |
-| antd: ^5.21.6                      | dotenv: ^16.4.7       |
-| antd-style: ^3.7.1                 | express: ^4.21.2      |
-| aos: ^2.3.4                        | joi: ^17.13.3         |
-| axios: ^1.7.7                      | mongoose: ^8.10.1     |
-| bootstrap: ^5.3.3                  |                       |
-| chart.js: ^4.4.6                   |                       |
-| formik: ^2.4.6                     |                       |
-| jspdf: ^2.5.1                      |                       |
-| jspdf-autotable: ^3.8.2            |                       |
-| react: ^18.3.1                     |                       |
-| react-bootstrap: ^2.10.5           |                       |
-| react-countup: ^6.5.3              |                       |
-| react-datepicker: ^7.5.0           |                       |
-| react-dom: ^18.3.1                 |                       |
-| react-icons: ^5.3.0                |                       |
-| react-router-dom: ^6.27.0          |                       |
-| react-scroll: ^1.9.0               |                       |
-| react-select: ^5.8.2               |                       |
-| recoil: ^0.7.7                     |                       |
-| vite-plugin-svgr: ^4.3.0           |                       |
-| yup: ^1.4.0                        |                       |
+## © License & Ownership
 
+This application is **owned and maintained by [BinaryCod](https://binarycod.com)**. All rights reserved. Unauthorized duplication or distribution is prohibited.
 
-# Screenshots of this project
+---
 
-User visit public and Home page
-![User visit public and Home page](./Project_images/image.png)
+## 👨‍💼 Developers
 
-## Author
+* **Usama Faheem Ahmed**
+  [Portfolio](https://usamafaheemahmed.com) | [GitHub](https://github.com/usamafaheemAhmed)
 
-[BinaryCod](https://binarycod.com)
+---
+
+## 🔗 Useful Links
+
+* [BinaryCod](https://binarycod.com)
+* [React](https://react.dev)
+* [Vite](https://vitejs.dev)
+* [Electron](https://www.electronjs.org/)
+
+---
+
+## 🎉 Screenshots
+
+![img1](./images/just%20opened.png)
+![img2](./images/Tables%20view.png)
+
+---
+
+## 🚀 Contributing
+
+Not open for external contributions at the moment.

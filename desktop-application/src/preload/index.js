@@ -50,11 +50,14 @@ const api = {
 
   // Stats
   getTodayStats: () => ipcRenderer.invoke('stats:todaySummary'),
+  getWeeklySummary: () => ipcRenderer.invoke('chart:getWeeklySummary'),
 
   // Expenses
   addExpense: (expense) => ipcRenderer.invoke('expense:add', expense),
   getExpenses: () => ipcRenderer.invoke('expense:getAll'),
   updateExpense: (expense) => ipcRenderer.invoke('expense:update', expense)
+
+
 }
 
 // ✅ Attach APIs to renderer (depending on contextIsolation setting)

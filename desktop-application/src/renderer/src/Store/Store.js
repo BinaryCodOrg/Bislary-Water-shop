@@ -47,3 +47,8 @@ export const ExpancesArray = atom({
   key: "ExpancesArray",
   default: [],
 });
+
+export const WeeklySummary = atom({
+  key: "WeeklySummary",
+  default: {},
+});
